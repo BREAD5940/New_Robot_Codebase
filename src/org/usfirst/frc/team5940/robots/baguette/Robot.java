@@ -8,6 +8,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 
+import org.usfirst.frc.team5940.core.main.Utilities;
+
 public class Robot extends TimedRobot {
 
 	TalonSRX elevatorTalon = new TalonSRX(RobotConfig.MASTER_ELEVATOR_TALON_PORT);
@@ -32,7 +34,7 @@ public class Robot extends TimedRobot {
 
 		double joystickPosition = operatorJoystick.getRawAxis(RobotConfig.ELEVATOR_CONTROL_AXIS);
 
-		double adjustedJoystickPosition = (RobotConfig.ELEVATOR_AXIS_INVERTED) ? -joystickPosition : joystickPosition;
+		double adjustedJoystickPosition = Utilities.InvertAxisIfNeeded(RobotConfig.ELEVATOR_AXIS_INVERTED, joystickPosition);
 
 		double targetPosition = this.elevatorJoystickTarget.getTarget(adjustedJoystickPosition);
 
