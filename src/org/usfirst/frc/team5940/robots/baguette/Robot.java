@@ -32,12 +32,14 @@ public class Robot extends TimedRobot {
 
 		double joystickPosition = operatorJoystick.getRawAxis(RobotConfig.ELEVATOR_CONTROL_AXIS);
 
-		double adjustedJoystickPosition = (RobotConfig.ELEVATOR_AXIS_INVERTED) ? -joystickPosition : joystickPosition;
+		// TODO make static method in utilities class to invert.
+		double adjustedJoystickPosition = RobotConfig.ELEVATOR_AXIS_INVERTED ? -joystickPosition : joystickPosition;
 
+		// TODO also make static method. In robot specific utilities though.
 		double targetPosition = this.elevatorJoystickTarget.getTarget(adjustedJoystickPosition);
 
 		double setVolts = this.elevatorControlLoop.update(targetPosition, currentPosition);
 
-		this.elevatorTalon.set(ControlMode.PercentOutput, setVolts / 12);//
+		this.elevatorTalon.set(ControlMode.PercentOutput, setVolts / 12);
 	}
 }
