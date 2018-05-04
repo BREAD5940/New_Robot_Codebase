@@ -35,10 +35,11 @@ public class Robot extends TimedRobot {
 
 		double adjustedJoystickPosition = Utilities.InvertAxisIfNeeded(RobotConfig.ELEVATOR_AXIS_INVERTED, joystickPosition);
 
+		// TODO also make static method. In robot specific utilities though.
 		double targetPosition = this.elevatorJoystickTarget.getTarget(adjustedJoystickPosition);
 
 		double setVolts = this.elevatorControlLoop.update(targetPosition, currentPosition);
 
-		this.elevatorTalon.set(ControlMode.PercentOutput, setVolts / 12);//
+		this.elevatorTalon.set(ControlMode.PercentOutput, setVolts / 12);
 	}
 }

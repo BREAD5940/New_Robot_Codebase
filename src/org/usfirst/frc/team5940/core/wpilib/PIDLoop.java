@@ -35,13 +35,13 @@ public class PIDLoop {
 	 *            cycle time.
 	 * @param target
 	 *            The target.
-	 * @param position
+	 * @param current
 	 *            The current position of the item.
 	 * @return The value of the PIDLoop
 	 */
-	public double calculate(double timeSinceLastUpdate, double target, double position) {
+	public double calculate(double timeSinceLastUpdate, double target, double current) {
 
-		double error = (target - position) * timeSinceLastUpdate;
+		double error = (target - current) * timeSinceLastUpdate;
 		double deltaError = error - this.previousError;
 		this.totalError += error;
 

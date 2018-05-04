@@ -6,6 +6,7 @@ public class EncoderConversion {
 
 	double conversionFactor;
 
+	// TODO make utilties class with this as static method. 
 	public EncoderConversion(double encoderPulsesPerRotation, double outputShaftRadius) {
 		if (encoderPulsesPerRotation == 0) {
 			conversionFactor = 0;
