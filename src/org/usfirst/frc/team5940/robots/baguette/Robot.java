@@ -18,7 +18,6 @@ public class Robot extends TimedRobot {
 	Joystick operatorJoystick = new Joystick(1);
 
 	ElevatorControlLoop elevatorControlLoop;
-	ElevatorJoystickTarget elevatorJoystickTarget;
 
 	@Override
 	public void robotInit() {
@@ -43,6 +42,6 @@ public class Robot extends TimedRobot {
 		// Calculate voltage required based on current and target position and set talon to it
 		double setVolts = this.elevatorControlLoop.update(targetPosition, currentPosition);
 		this.elevatorTalon.set(ControlMode.PercentOutput, setVolts / 12);
-		
+
 	}
 }
