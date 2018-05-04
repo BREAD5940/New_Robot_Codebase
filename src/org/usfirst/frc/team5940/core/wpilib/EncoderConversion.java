@@ -2,6 +2,8 @@ package org.usfirst.frc.team5940.core.wpilib;
 
 public class EncoderConversion {
 
+	//THIS CLASS IS DEPRECATED AND NOT IN USE
+
 	double conversionFactor;
 
 	public EncoderConversion(double encoderPulsesPerRotation, double outputShaftRadius) {
@@ -15,4 +17,5 @@ public class EncoderConversion {
 	public double convert(double encoderPulses) {
 		return encoderPulses * this.conversionFactor;
 	}
+
 }
