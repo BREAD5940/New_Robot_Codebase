@@ -9,7 +9,6 @@ public class ElevatorControlLoop {
 
 	public double update(double timeSinceLastUpdate, double targetPosition, double currentPosition) {
 		double out = this.pidLoop.calculate(timeSinceLastUpdate, targetPosition, currentPosition);
-
 		out = Math.min(12, Math.max(-12, out));
 		return out;
 	}
