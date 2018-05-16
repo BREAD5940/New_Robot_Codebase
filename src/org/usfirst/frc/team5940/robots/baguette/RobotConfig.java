@@ -156,6 +156,8 @@ public interface RobotConfig {
 	public static final double POSITION_PULSES_PER_ROTATION = 4096f;
 
 	public static final int SOLENOID_MODULE_NUMBER = 9;
+	
+	public static final double UPDATE_RATE = 0.02;
 
 	// CIABATTA
 	public static final float CIABATTA_LOW_GEAR_POSITION_P = 0.5f;
