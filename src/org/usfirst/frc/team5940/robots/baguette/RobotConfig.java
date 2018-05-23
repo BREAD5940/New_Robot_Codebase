@@ -124,13 +124,13 @@ public interface RobotConfig {
 
 	public static final double MAX_ELEVATOR_VOLTS = 12;
 
-	public static final int ELEVATOR_MOTOR_COUNT = 2;
+	public static final int ELEVATOR_MOTOR_COUNT = 1;
 
 	public static final int ELEVATOR_GEAR_RATIO = 30;
 
 	public static final double ELEVATOR_MASS = 28.18;
 
-	public static final MotorType ELEVATOR_MOTOR_TYPE = MotorType.PRO;
+	public static final MotorType ELEVATOR_MOTOR_TYPE = MotorType.MiniCIM;
 
 	// ELEVATOR PID
 	public static final double ELEVATOR_TALON_P = 165;
