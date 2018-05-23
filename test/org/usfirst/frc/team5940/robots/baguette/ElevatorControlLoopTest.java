@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.Collection;
 
+import javax.swing.text.Position;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -19,7 +21,7 @@ public class ElevatorControlLoopTest {
 
 	@Parameters
 	public static Collection testValues() {
-		return Arrays.asList(new Object[][] { { 1, 0, 2 }, { 0, 0, 20 }, { 0, 0.6, 2 } });
+		return Arrays.asList(new Object[][] { { 1, 0, 3 }, { 0, 0, 20 }, { 0, 0.6, 2 } });
 	}
 
 	@Parameter
@@ -30,7 +32,7 @@ public class ElevatorControlLoopTest {
 
 	@Parameter(2)
 	public double testDuration;
-		
+
 	@Test
 	public void testElevatorMovement() {
 		MotorAccelerationTest elevatorAccelerationCalculator = new MotorAccelerationTest(
@@ -46,12 +48,12 @@ public class ElevatorControlLoopTest {
 		int currentUpdate = 0;
 		double setVolts = 0;
 		double currentVelocity = 0;
+
 		for (double currentTime = 0; currentTime <= testDuration; currentTime += dt) {
 			if (currentUpdate % controlLoopUpdateRate == 0) {
 				setVolts = testLoop.update(updateRate, targetPosition, currentPosition);
 				assertTrue(setVolts <= 12);
 				assertTrue(setVolts >= -12);
-
 			}
 			currentUpdate++;
 
@@ -63,8 +65,8 @@ public class ElevatorControlLoopTest {
 
 			assertTrue(currentPosition >= -0.03);
 			assertTrue(currentPosition <= RobotConfig.MAX_ELEVATOR_HEIGHT + 0.03);
-		}
 
+		}
 		double filteredTarget = Math.min(RobotConfig.MAX_ELEVATOR_HEIGHT, Math.max(0, targetPosition));
 
 		assertEquals(filteredTarget, currentPosition, 0.02);
